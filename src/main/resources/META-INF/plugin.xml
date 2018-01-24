@@ -1,0 +1,37 @@
+<idea-plugin>
+    <id>com.sch.ij.plugins.serializedname</id>
+    <name>Add @SerializedName</name>
+    <version>1.0</version>
+    <vendor email="sergey.chelombitko@gmail.com">Sergey Chelombitko</vendor>
+
+    <description><![CDATA[
+        Add @SerializedName annotations to fields using Alt+Enter.
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="171" />
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <intentionAction>
+            <className>com.sch.ij.plugins.serializedname.AddSerializedNameIntentionAction</className>
+            <category>Java/Annotations</category>
+        </intentionAction>
+    </extensions>
+
+    <project-components>
+        <component>
+            <implementation-class>com.sch.ij.plugins.serializedname.AddSerializedNameIntentionAction</implementation-class>
+        </component>
+    </project-components>
+
+    <actions>
+        <action id="addSerializedName" class="com.sch.ij.plugins.serializedname.AddSerializedNameAction"
+                text="Add @SerializedName">
+            <add-to-group group-id="ProjectViewAnalysisGroup" anchor="last" />
+        </action>
+    </actions>
+</idea-plugin>
